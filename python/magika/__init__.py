@@ -26,6 +26,9 @@ Basic usage:
 
 Note: For batch processing of many files, prefer `identify_paths` over
 calling `identify_path` in a loop -- it's significantly faster.
+
+Note: `MagikaResult.output.ct_label` gives the content type label (e.g. 'python',
+'pdf', 'zip'). Use `MagikaResult.output.mime_type` for the MIME type string.
 """
 
 from magika.magika import Magika
