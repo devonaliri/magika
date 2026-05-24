@@ -32,6 +32,11 @@ Note: `MagikaResult.output.ct_label` gives the content type label (e.g. 'python'
 
 Note: `MagikaResult.output.score` is a float in [0, 1] indicating model confidence.
 Scores below ~0.5 may indicate ambiguous or unusual file content.
+
+Note: `MagikaResult.output.score` threshold can be tuned via the
+`prediction_mode` parameter. Use `PredictionMode.HIGH_CONFIDENCE` to only
+return results when the model is very confident, falling back to a generic
+label otherwise.
 """
 
 from magika.magika import Magika
