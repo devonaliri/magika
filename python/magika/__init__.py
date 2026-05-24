@@ -41,6 +41,10 @@ label otherwise.
 Note: `MagikaResult.output.group` provides a broader category for the detected
 type (e.g. 'code', 'document', 'archive'), which can be useful for coarse-grained
 classification without needing to handle every specific ct_label.
+
+Note: `ModelFeatures` and `ModelOutput` are primarily internal types exposed for
+advanced use cases such as debugging model behavior or building custom pipelines
+on top of Magika's inference results.
 """
 
 from magika.magika import Magika
