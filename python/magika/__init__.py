@@ -37,6 +37,10 @@ Note: `MagikaResult.output.score` threshold can be tuned via the
 `prediction_mode` parameter. Use `PredictionMode.HIGH_CONFIDENCE` to only
 return results when the model is very confident, falling back to a generic
 label otherwise.
+
+Note: `MagikaResult.output.group` provides a broader category for the detected
+type (e.g. 'code', 'document', 'archive'), which can be useful for coarse-grained
+classification without needing to handle every specific ct_label.
 """
 
 from magika.magika import Magika
