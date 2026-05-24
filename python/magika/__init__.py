@@ -45,10 +45,15 @@ classification without needing to handle every specific ct_label.
 Note: `ModelFeatures` and `ModelOutput` are primarily internal types exposed for
 advanced use cases such as debugging model behavior or building custom pipelines
 on top of Magika's inference results.
+
+Note: `ContentTypeLabel` is also exported for use in type annotations and for
+comparing against `MagikaResult.output.ct_label` values without relying on
+raw strings.
 """
 
 from magika.magika import Magika
 from magika.types import (
+    ContentTypeLabel,
     MagikaResult,
     MagikaOutputFields,
     ModelFeatures,
@@ -61,6 +66,7 @@ __author__ = "Google LLC"
 
 __all__ = [
     "Magika",
+    "ContentTypeLabel",
     "MagikaResult",
     "MagikaOutputFields",
     "ModelFeatures",
