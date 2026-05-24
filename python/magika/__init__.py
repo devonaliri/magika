@@ -29,6 +29,9 @@ calling `identify_path` in a loop -- it's significantly faster.
 
 Note: `MagikaResult.output.ct_label` gives the content type label (e.g. 'python',
 'pdf', 'zip'). Use `MagikaResult.output.mime_type` for the MIME type string.
+
+Note: `MagikaResult.output.score` is a float in [0, 1] indicating model confidence.
+Scores below ~0.5 may indicate ambiguous or unusual file content.
 """
 
 from magika.magika import Magika
