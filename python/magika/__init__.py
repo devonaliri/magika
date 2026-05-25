@@ -49,6 +49,9 @@ on top of Magika's inference results.
 Note: `ContentTypeLabel` is also exported for use in type annotations and for
 comparing against `MagikaResult.output.ct_label` values without relying on
 raw strings.
+
+Note: `MagikaError` is exported for catching errors raised by Magika in a
+structured way, e.g. when a file cannot be read or an inference error occurs.
 """
 
 from magika.magika import Magika
