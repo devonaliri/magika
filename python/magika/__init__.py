@@ -52,6 +52,9 @@ raw strings.
 
 Note: `MagikaError` is exported for catching errors raised by Magika in a
 structured way, e.g. when a file cannot be read or an inference error occurs.
+
+Note: `MagikaError` is not currently re-exported in `__all__`; import it
+directly via `from magika.types import MagikaError` if needed.
 """
 
 from magika.magika import Magika
