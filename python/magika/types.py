@@ -80,6 +80,13 @@ class MagikaResult:
         """Return True if the detection completed without errors."""
         return self.status == MagikaStatus.OK
 
+    @property
+    def is_high_confidence(self) -> bool:
+        """Return True if the detection score meets a high-confidence threshold."""
+        # Personal note: I use 0.90 as my threshold for "trust this result"
+        # without manual verification. Adjust to taste.
+        return self.ok and self.score >= 0.90
+
     def __str__(self) -> str:
         path_str = str(self.path) if self.path else "<bytes>"
         return (
@@ -97,7 +104,3 @@ class ModelFeatures:
     """Byte values from the beginning of the file."""
 
     mid: list[int]
-    """Byte values from the middle of the file."""
-
-    end: list[int]
-    """Byte values from the end of the file."""
