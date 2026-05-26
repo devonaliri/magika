@@ -19,6 +19,10 @@ from enum import Enum
 from pathlib import Path
 from typing import Optional
 
+# Personal note: bumped HIGH_CONFIDENCE_THRESHOLD from 0.90 to 0.95 so that
+# is_high_confidence is a bit more conservative. Adjust back if too strict.
+HIGH_CONFIDENCE_THRESHOLD = 0.95
+
 
 class MagikaStatus(str, Enum):
     """Status codes for Magika detection results."""
@@ -83,24 +87,11 @@ class MagikaResult:
     @property
     def is_high_confidence(self) -> bool:
         """Return True if the detection score meets a high-confidence threshold."""
-        # Personal note: I use 0.90 as my threshold for "trust this result"
-        # without manual verification. Adjust to taste.
-        return self.ok and self.score >= 0.90
+        return self.ok and self.score >= HIGH_CONFIDENCE_THRESHOLD
 
     def __str__(self) -> str:
         path_str = str(self.path) if self.path else "<bytes>"
         return (
             f"MagikaResult(path={path_str!r}, label={self.output.label!r}, "
-            f"mime_type={self.output.mime_type!r}, score={self.score:.4f}, "
-            f"status={self.status.value!r})"
+            f"score={self.score:.4f}, status={self.status.value!r})"
         )
-
-
-@dataclass
-class ModelFeatures:
-    """Input features extracted from file content for the ML model."""
-
-    beg: list[int]
-    """Byte values from the beginning of the file."""
-
-    mid: list[int]
